@@ -13,7 +13,8 @@ class ConsoleManager extends ChangeNotifier {
 
   List<String> getLines() {
     final list = SplayTreeMap<int, String>.from(_lista, (k1, k2) => k2.compareTo(k1));
-    return list.values.take(10).toList();
+    final max = list.values.length < 10 ? list.values.length : 10;
+    return list.values.take(max).toList();
   }
 
   void clear() {
