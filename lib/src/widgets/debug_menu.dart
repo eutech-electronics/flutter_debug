@@ -55,7 +55,7 @@ class _DebugFriendMenuState extends State<DebugFriendMenu> {
                   onPressed: () => _closeMenu(context),
                   icon: const Icon(
                     Icons.close,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ],
@@ -77,7 +77,7 @@ class _DebugFriendMenuState extends State<DebugFriendMenu> {
                           child: CommonActionHeader(
                             theme: widget.theme,
                             selected: _selectedIndex == e.key,
-                            icon: Icon(e.value, color: Colors.white),
+                            icon: Icon(e.value, color: Colors.black),
                           ),
                         ),
                       )

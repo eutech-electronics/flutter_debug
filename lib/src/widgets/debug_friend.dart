@@ -66,10 +66,11 @@ class _DebugFriendButtonState extends State<DebugFriendButton>
       onTap: widget.onTap,
       child: Align(
         alignment: _dragAlignment,
-        child: DecoratedBox(
+        child: Container(
+          margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: widget.theme.primaryColor,
-            shape: BoxShape.circle,
+            borderRadius: BorderRadius.circular(10),
           ),
           child: widget.child,
         ),
