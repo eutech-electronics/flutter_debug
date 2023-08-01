@@ -1,6 +1,6 @@
 import 'package:debug_friend/debug_friend.dart';
-import 'package:debug_friend/src/utils/console_manager.dart';
 import 'package:debug_friend/src/utils/utils.dart';
+import 'package:debug_friend/src/widgets/actions/app_console/app_console.dart';
 import 'package:debug_friend/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +91,7 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
             // Icons.extension,
           ],
           bodies: [
-
+            AppConsole(theme: theme,),
             AppInfoBody(theme: theme),
             AppDataBody(theme: theme),
             AppActionsBody(theme: theme),
