@@ -4,57 +4,43 @@ import 'package:debug_friend/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-/// Wraps your application in the debug friend zone
-///
-/// {@tool snippet}
-///
-/// This sample shows how to define an app with a plugin.
-///
-/// ```dart
-///DebugFriendView(
-///  builder: (context) {
-///    return const Scaffold(
-///      body: Text('Your app home widget'),
-///    );
-///  },
-/// ),
-/// ```
-/// {@end-tool}
-class DebugFriendView extends StatefulWidget {
-  DebugFriendView({
-    Key? key,
-    this.icon = const Icon(Icons.bug_report),
+class DebugFriendView extends StatelessWidget {
+  const DebugFriendView({
     required this.builder,
     this.enabled = kDebugMode,
-    // this.customActions,
-    this.theme,
+  });
+
+  final WidgetBuilder builder;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      color: Colors.transparent,
+      debugShowCheckedModeBanner: false,
+      home: _InnerDebugFriendView(builder: builder, enabled: enabled,),
+    );
+  }
+}
+
+class _InnerDebugFriendView extends StatefulWidget {
+  _InnerDebugFriendView({
+    Key? key,
+    required this.builder,
+    required this.enabled,
   })  : _bottomSheetManager = BottomSheetManager(),
         super(key: key);
 
-  /// Widget that displayed at DebugFriend action header
-  final Widget icon;
-
-  /// Should return your application widget for which DebugFriend is applied
+  final Widget icon = const Icon(Icons.bug_report);
   final WidgetBuilder builder;
-
-  /// When this field is [true] - debug friend is running in your app
-  /// in other case - [DebugFriendButton] going sleep
-  /// By default this field get value from const [kDebugMode]
   final bool enabled;
-
-  // /// Custom actions menu items
-  // /// They are shown on the 4th page of the menu
-  // final List<ActionCard>? customActions;
-
-  final DebugFriendTheme? theme;
-
   final BottomSheetManager _bottomSheetManager;
 
   @override
-  State<DebugFriendView> createState() => _DebugFriendViewState();
+  State<_InnerDebugFriendView> createState() => _InnerDebugFriendViewState();
 }
 
-class _DebugFriendViewState extends State<DebugFriendView> {
+class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
   @override
   void initState() {
     if (widget.enabled && kDebugMode) {
@@ -67,19 +53,12 @@ class _DebugFriendViewState extends State<DebugFriendView> {
 
   @override
   Widget build(BuildContext context) {
-    if (kDebugMode) {
-      return WidgetsApp(
-        color: Colors.transparent,
-        home: widget.builder.call(context),
-      );
-    } else {
       return widget.builder.call(context);
-    }
   }
 
   void _insertOverlay(BuildContext context) {
-    final theme = widget.theme ?? DebugFriendTheme.fromFlutterTheme(context);
-    return Overlay.of(context)!.insert(
+    final theme = DebugFriendTheme.fromFlutterTheme(context);
+    return Overlay.of(context).insert(
       OverlayEntry(
         builder: (context) {
           return DebugFriendButton(
