@@ -57,7 +57,7 @@ class DebugFriendView extends StatefulWidget {
 class _DebugFriendViewState extends State<DebugFriendView> {
   @override
   void initState() {
-    if (widget.enabled) {
+    if (widget.enabled && kDebugMode) {
       WidgetsBinding.instance.addPostFrameCallback(
         (timeStamp) => _insertOverlay(context),
       );
@@ -67,7 +67,14 @@ class _DebugFriendViewState extends State<DebugFriendView> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder.call(context);
+    if (kDebugMode) {
+      return WidgetsApp(
+        color: Colors.transparent,
+        home: widget.builder.call(context),
+      );
+    } else {
+      return widget.builder.call(context);
+    }
   }
 
   void _insertOverlay(BuildContext context) {
