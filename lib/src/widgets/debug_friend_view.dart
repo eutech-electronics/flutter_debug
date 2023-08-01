@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DebugFriendView extends StatelessWidget {
+class DebugFriendView extends StatefulWidget {
   const DebugFriendView({
     required this.builder,
     this.enabled = kDebugMode,
@@ -16,13 +16,21 @@ class DebugFriendView extends StatelessWidget {
   final bool enabled;
 
   @override
+  State<DebugFriendView> createState() => _DebugFriendViewState();
+}
+
+class _DebugFriendViewState extends State<DebugFriendView> {
+
+  final console = ConsoleManager();
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       color: Colors.transparent,
       debugShowCheckedModeBanner: false,
-      home: Provider(
-          create: (_) => ConsoleManager(),
-          child: _InnerDebugFriendView(builder: builder, enabled: enabled,),
+      home: Provider.value(
+          value: console,
+          child: _InnerDebugFriendView(builder: widget.builder, enabled: widget.enabled, console: console),
       ),
     );
   }
@@ -33,9 +41,11 @@ class _InnerDebugFriendView extends StatefulWidget {
     Key? key,
     required this.builder,
     required this.enabled,
+    required this.console,
   })  : _bottomSheetManager = BottomSheetManager(),
         super(key: key);
 
+  final ConsoleManager console;
   final Widget icon = const Icon(Icons.bug_report);
   final WidgetBuilder builder;
   final bool enabled;
@@ -46,6 +56,7 @@ class _InnerDebugFriendView extends StatefulWidget {
 }
 
 class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
+
   @override
   void initState() {
     if (widget.enabled && kDebugMode) {
@@ -81,8 +92,8 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
       context,
       theme: theme,
       builder: (ctx) {
-        return Provider(
-          create: (_) => ConsoleManager(),
+        return Provider.value(
+          value: widget.console,
           child: DebugFriendMenu(
             theme: theme,
             headers: const [
