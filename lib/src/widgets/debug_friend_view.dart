@@ -23,7 +23,7 @@ class DebugFriendView extends StatelessWidget {
       home: Provider(
           create: (_) => ConsoleManager(),
           child: _InnerDebugFriendView(builder: builder, enabled: enabled,),
-      )
+      ),
     );
   }
 }
@@ -50,7 +50,7 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
   void initState() {
     if (widget.enabled && kDebugMode) {
       WidgetsBinding.instance.addPostFrameCallback(
-        (timeStamp) => _insertOverlay(context),
+            (timeStamp) => _insertOverlay(context),
       );
     }
     super.initState();
@@ -58,7 +58,7 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
 
   @override
   Widget build(BuildContext context) {
-      return widget.builder.call(context);
+    return widget.builder.call(context);
   }
 
   void _insertOverlay(BuildContext context) {
@@ -81,21 +81,24 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
       context,
       theme: theme,
       builder: (ctx) {
-        return DebugFriendMenu(
-          theme: theme,
-          headers: const [
-            Icons.list_outlined,
-            Icons.app_settings_alt,
-            Icons.folder_open,
-            Icons.touch_app,
-            // Icons.extension,
-          ],
-          bodies: [
-            AppConsole(theme: theme,),
-            AppInfoBody(theme: theme),
-            AppDataBody(theme: theme),
-            AppActionsBody(theme: theme),
-          ],
+        return Provider(
+          create: (_) => ConsoleManager(),
+          child: DebugFriendMenu(
+            theme: theme,
+            headers: const [
+              Icons.list_outlined,
+              Icons.app_settings_alt,
+              Icons.folder_open,
+              Icons.touch_app,
+              // Icons.extension,
+            ],
+            bodies: [
+              AppConsole(theme: theme,),
+              AppInfoBody(theme: theme),
+              AppDataBody(theme: theme),
+              AppActionsBody(theme: theme),
+            ],
+          ),
         );
       },
     );
