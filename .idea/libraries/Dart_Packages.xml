@@ -96,21 +96,21 @@
         <entry key="flutter">
           <value>
             <list>
-              <option value="$USER_HOME$/Development/flutter/packages/flutter/lib" />
+              <option value="$USER_HOME$/development/flutter/packages/flutter/lib" />
             </list>
           </value>
         </entry>
         <entry key="flutter_test">
           <value>
             <list>
-              <option value="$USER_HOME$/Development/flutter/packages/flutter_test/lib" />
+              <option value="$USER_HOME$/development/flutter/packages/flutter_test/lib" />
             </list>
           </value>
         </entry>
         <entry key="flutter_web_plugins">
           <value>
             <list>
-              <option value="$USER_HOME$/Development/flutter/packages/flutter_web_plugins/lib" />
+              <option value="$USER_HOME$/development/flutter/packages/flutter_web_plugins/lib" />
             </list>
           </value>
         </entry>
@@ -174,6 +174,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/mime-1.0.4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="nested">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/nested-1.0.0/lib" />
             </list>
           </value>
         </entry>
@@ -254,6 +261,13 @@
             </list>
           </value>
         </entry>
+        <entry key="provider">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/provider-6.0.5/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="share_plus">
           <value>
             <list>
@@ -271,7 +285,7 @@
         <entry key="sky_engine">
           <value>
             <list>
-              <option value="$USER_HOME$/Development/flutter/bin/cache/pkg/sky_engine/lib" />
+              <option value="$USER_HOME$/development/flutter/bin/cache/pkg/sky_engine/lib" />
             </list>
           </value>
         </entry>
@@ -433,6 +447,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/material_color_utilities-0.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.9.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/mime-1.0.4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/nested-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus-4.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus_platform_interface-2.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path-1.8.3/lib" />
@@ -444,6 +459,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_windows-2.1.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/platform-3.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.5/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/provider-6.0.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/share_plus-7.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/share_plus_platform_interface-3.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/source_span-1.9.1/lib" />
@@ -465,10 +481,10 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/win32-5.0.6/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/win32_registry-1.1.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/xdg_directories-1.0.1/lib" />
-      <root url="file://$USER_HOME$/Development/flutter/bin/cache/pkg/sky_engine/lib" />
-      <root url="file://$USER_HOME$/Development/flutter/packages/flutter/lib" />
-      <root url="file://$USER_HOME$/Development/flutter/packages/flutter_test/lib" />
-      <root url="file://$USER_HOME$/Development/flutter/packages/flutter_web_plugins/lib" />
+      <root url="file://$USER_HOME$/development/flutter/bin/cache/pkg/sky_engine/lib" />
+      <root url="file://$USER_HOME$/development/flutter/packages/flutter/lib" />
+      <root url="file://$USER_HOME$/development/flutter/packages/flutter_test/lib" />
+      <root url="file://$USER_HOME$/development/flutter/packages/flutter_web_plugins/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

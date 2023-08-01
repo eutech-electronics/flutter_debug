@@ -1,8 +1,10 @@
 import 'package:debug_friend/debug_friend.dart';
+import 'package:debug_friend/src/utils/console_manager.dart';
 import 'package:debug_friend/src/utils/utils.dart';
 import 'package:debug_friend/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DebugFriendView extends StatelessWidget {
   const DebugFriendView({
@@ -18,7 +20,10 @@ class DebugFriendView extends StatelessWidget {
     return MaterialApp(
       color: Colors.transparent,
       debugShowCheckedModeBanner: false,
-      home: _InnerDebugFriendView(builder: builder, enabled: enabled,),
+      home: Provider(
+          create: (_) => ConsoleManager(),
+          child: _InnerDebugFriendView(builder: builder, enabled: enabled,),
+      )
     );
   }
 }
@@ -79,16 +84,17 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
         return DebugFriendMenu(
           theme: theme,
           headers: const [
+            Icons.list_outlined,
             Icons.app_settings_alt,
             Icons.folder_open,
             Icons.touch_app,
             // Icons.extension,
           ],
           bodies: [
+
             AppInfoBody(theme: theme),
             AppDataBody(theme: theme),
             AppActionsBody(theme: theme),
-            // CustomActionBody(cards: widget.customActions),
           ],
         );
       },

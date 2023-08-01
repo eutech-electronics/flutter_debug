@@ -68,6 +68,7 @@ class _DebugFriendButtonState extends State<DebugFriendButton>
         alignment: _dragAlignment,
         child: Container(
           margin: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: widget.theme.primaryColor,
             borderRadius: BorderRadius.circular(10),
