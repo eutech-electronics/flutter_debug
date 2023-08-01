@@ -19,7 +19,7 @@ class DebugFriendButton extends StatefulWidget {
 class _DebugFriendButtonState extends State<DebugFriendButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  Alignment _dragAlignment = Alignment.centerRight;
+  Alignment _dragAlignment = Alignment.topRight;
   final _simulationCalculator = SimulationCalculator();
 
   void _runAnimation(Offset pixelsPerSecond, Size size) {
