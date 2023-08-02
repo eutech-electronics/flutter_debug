@@ -15,7 +15,7 @@ class DebugFriendMenu extends StatefulWidget {
   final List<Widget> bodies;
   final List<IconData> headers;
   final DebugFriendTheme theme;
-  final Function onClose;
+  final Function() onClose;
 
   @override
   _DebugFriendMenuState createState() => _DebugFriendMenuState();
@@ -24,14 +24,11 @@ class DebugFriendMenu extends StatefulWidget {
 class _DebugFriendMenuState extends State<DebugFriendMenu> {
   int _selectedIndex = 0;
 
-  void _closeMenu(BuildContext context) {
-    widget.onClose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SizedBox(
+    return Container(
+      color: Colors.grey,
       height: size.height * 0.9,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +51,7 @@ class _DebugFriendMenuState extends State<DebugFriendMenu> {
                   style: widget.theme.headerStyle,
                 ),
                 IconButton(
-                  onPressed: () => _closeMenu(context),
+                  onPressed: widget.onClose,
                   icon: const Icon(
                     Icons.close,
                     color: Colors.black,

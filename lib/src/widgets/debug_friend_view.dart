@@ -35,7 +35,7 @@ class _DebugFriendViewState extends State<DebugFriendView> {
           GlobalWidgetsLocalizations.delegate,
         ],
         child: Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: Stack(
             children: [
               widget.builder.call(context),
@@ -75,15 +75,14 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedCrossFade(
-        firstChild: Positioned(
-          right: 10,
-          top: 40,
-          child: DebugFriendButton(
-            theme: theme,
-            onTap: () => _onButtonTap(context, theme),
-            child: widget.icon,
-          ),
+    return Positioned(
+      right: 10,
+      bottom: 10,
+      child: AnimatedCrossFade(
+        firstChild: DebugFriendButton(
+          theme: theme,
+          onTap: () => _onButtonTap(context, theme),
+          child: widget.icon,
         ),
         secondChild: Provider.value(
           value: widget.console,
@@ -109,8 +108,10 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
             ],
           ),
         ),
-        crossFadeState: _showMenu ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+        crossFadeState: _showMenu ? CrossFadeState.showSecond : CrossFadeState
+            .showFirst,
         duration: const Duration(milliseconds: 300),
+      ),
     );
   }
 
