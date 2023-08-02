@@ -32,6 +32,7 @@ class _DebugFriendViewState extends State<DebugFriendView> {
         locale: const Locale("it"),
         delegates: const [
           GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
         ],
         child: Directionality(
           textDirection: TextDirection.rtl,
