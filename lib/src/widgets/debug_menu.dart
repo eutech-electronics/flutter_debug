@@ -30,6 +30,7 @@ class _DebugFriendMenuState extends State<DebugFriendMenu> {
     return Container(
       color: Colors.grey,
       height: size.height * 0.9,
+      width: size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

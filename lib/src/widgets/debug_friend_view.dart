@@ -76,8 +76,8 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      right: 10,
-      bottom: 10,
+      right: _showMenu ? 0 : 10,
+      bottom: _showMenu ? 0 : 10,
       child: AnimatedCrossFade(
         firstChild: DebugFriendButton(
           theme: theme,
