@@ -63,8 +63,9 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
+    return Positioned(
+      right: 10,
+      top: 10,
       child: DebugFriendButton(
         theme: theme,
         onTap: () => _onButtonTap(context, theme),
