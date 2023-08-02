@@ -9,11 +9,13 @@ class DebugFriendMenu extends StatefulWidget {
     required this.bodies,
     required this.headers,
     required this.theme,
+    required this.onClose,
   }) : super(key: key);
 
   final List<Widget> bodies;
   final List<IconData> headers;
   final DebugFriendTheme theme;
+  final Function onClose;
 
   @override
   _DebugFriendMenuState createState() => _DebugFriendMenuState();
@@ -23,7 +25,7 @@ class _DebugFriendMenuState extends State<DebugFriendMenu> {
   int _selectedIndex = 0;
 
   void _closeMenu(BuildContext context) {
-    Navigator.pop(context);
+    widget.onClose();
   }
 
   @override

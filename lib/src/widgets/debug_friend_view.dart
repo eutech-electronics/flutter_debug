@@ -70,28 +70,29 @@ class _InnerDebugFriendView extends StatefulWidget {
 class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
 
   late final theme = DebugFriendTheme.fromFlutterTheme(context);
+  bool _showMenu = false;
+
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      right: 10,
-      top: 40,
-      child: DebugFriendButton(
-        theme: theme,
-        onTap: () => _onButtonTap(context, theme),
-        child: widget.icon,
-      ),
-    );
-  }
-
-  void _onButtonTap(BuildContext context, DebugFriendTheme theme) {
-    widget._bottomSheetManager.showBottomSheet(
-      context,
-      theme: theme,
-      builder: (ctx) {
-        return Provider.value(
+    return AnimatedCrossFade(
+        firstChild: Positioned(
+          right: 10,
+          top: 40,
+          child: DebugFriendButton(
+            theme: theme,
+            onTap: () => _onButtonTap(context, theme),
+            child: widget.icon,
+          ),
+        ),
+        secondChild: Provider.value(
           value: widget.console,
           child: DebugFriendMenu(
+            onClose: () {
+              setState(() {
+                _showMenu = false;
+              });
+            },
             theme: theme,
             headers: const [
               Icons.list_outlined,
@@ -107,8 +108,15 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
               AppActionsBody(theme: theme),
             ],
           ),
-        );
-      },
+        ),
+        crossFadeState: _showMenu ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+        duration: const Duration(milliseconds: 300),
     );
+  }
+
+  void _onButtonTap(BuildContext context, DebugFriendTheme theme) {
+    setState(() {
+      _showMenu = true;
+    });
   }
 }
