@@ -4,6 +4,7 @@ import 'package:debug_friend/src/widgets/actions/app_console/app_console.dart';
 import 'package:debug_friend/src/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 class DebugFriendView extends StatefulWidget {
@@ -29,7 +30,9 @@ class _DebugFriendViewState extends State<DebugFriendView> {
       value: console,
       child: Localizations(
         locale: const Locale("it"),
-        delegates: const [],
+        delegates: const [
+          GlobalWidgetsLocalizations.delegate,
+        ],
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: Stack(
