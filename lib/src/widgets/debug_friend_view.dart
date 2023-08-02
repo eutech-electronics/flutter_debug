@@ -31,9 +31,7 @@ class _DebugFriendViewState extends State<DebugFriendView> {
         textDirection: TextDirection.rtl,
         child: Stack(
           children: [
-            Expanded(
-              child: widget.builder.call(context),
-            ),
+            widget.builder.call(context),
             if (widget.enabled)
               _InnerDebugFriendView(enabled: widget.enabled, console: console),
           ],
@@ -68,7 +66,7 @@ class _InnerDebugFriendViewState extends State<_InnerDebugFriendView> {
   Widget build(BuildContext context) {
     return Positioned(
       right: 10,
-      top: 10,
+      top: 30,
       child: DebugFriendButton(
         theme: theme,
         onTap: () => _onButtonTap(context, theme),
