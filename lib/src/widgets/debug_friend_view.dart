@@ -27,14 +27,19 @@ class _DebugFriendViewState extends State<DebugFriendView> {
   Widget build(BuildContext context) {
     return Provider.value(
       value: console,
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Stack(
-          children: [
-            widget.builder.call(context),
-            if (widget.enabled)
-              _InnerDebugFriendView(enabled: widget.enabled, console: console),
-          ],
+      child: Localizations(
+        locale: const Locale("it"),
+        delegates: const [],
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Stack(
+            children: [
+              widget.builder.call(context),
+              if (widget.enabled)
+                _InnerDebugFriendView(
+                    enabled: widget.enabled, console: console,),
+            ],
+          ),
         ),
       ),
     );
